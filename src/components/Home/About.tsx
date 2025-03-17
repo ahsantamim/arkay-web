@@ -4,12 +4,15 @@ import { motion } from "framer-motion";
 // Gallery Component with Custom Grid Layout
 const Gallery = ({ items }: { items: Array<any> }) => {
   return (
-    <div className="min-h-screen max-w-6xl mx-auto mt-24 h-screen">
+    <div className="min-h-screen max-w-6xl mx-auto mt-24 h-screen px-4 sm:px-0">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-extrabold mb-4">Explore Our Digital Billboard Locations</h1>
+        <h1 className="text-4xl font-extrabold mb-4">
+          Explore Our Digital Billboard Locations
+        </h1>
         <p className="text-lg text-gray-700 mb-6">
-          Find the perfect spot for your advertisement with our extensive network of digital billboards.
+          Find the perfect spot for your advertisement with our extensive
+          network of digital billboards.
         </p>
 
         {/* Simple Framer Motion Button */}
