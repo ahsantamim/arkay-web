@@ -41,9 +41,9 @@ const Gallery = ({ items }: { items: Array<any> }) => {
             <img
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-3xl"
             />
-            <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
               <h2 className="text-white text-xl font-bold">{item.title}</h2>
             </div>
           </div>
