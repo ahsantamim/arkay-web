@@ -1,263 +1,491 @@
 // "use client";
-// import React, { useState } from "react";
-// import { motion } from "motion/react";
+// import React, { useState, useEffect, useRef } from "react";
+// import { motion } from "framer-motion";
 // import Link from "next/link";
-
-// const transition = {
-//   type: "spring",
-//   mass: 0.5,
-//   damping: 11.5,
-//   stiffness: 100,
-//   restDelta: 0.001,
-//   restSpeed: 0.001,
-// };
-
-// const MenuItem = ({
-//   setActive,
-//   active,
-//   item,
-//   children,
-// }: {
-//   setActive: (item: string) => void;
-//   active: string | null;
-//   item: string;
-//   children?: React.ReactNode;
-// }) => {
-//   return (
-//     <div onMouseEnter={() => setActive(item)} className="relative">
-//       <motion.p
-//         transition={{ duration: 0.3 }}
-//         className="cursor-pointer text-white hover:opacity-[0.9] font-normal uppercase"
-//       >
-//         {item}
-//       </motion.p>
-//       {active === item && (
-//         <motion.div
-//           initial={{ opacity: 0, scale: 0.85, y: 10 }}
-//           animate={{ opacity: 1, scale: 1, y: 0 }}
-//           transition={transition}
-//           className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4"
-//         >
-//           <motion.div
-//             transition={transition}
-//             layoutId="active"
-//             className="bg-black backdrop-blur-sm overflow-hidden border border-white/[0.2] shadow-xl"
-//           >
-//             <motion.div layout className="w-max h-full p-4">
-//               {children}
-//             </motion.div>
-//           </motion.div>
-//         </motion.div>
-//       )}
-//     </div>
-//   );
-// };
+// import { GiHamburgerMenu } from "react-icons/gi";
+// import { RxCross2 } from "react-icons/rx";
+// import { FaAngleDown } from "react-icons/fa";
 
 // const Navbar = () => {
-//   const [active, setActive] = useState<string | null>(null);
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+//   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+//   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+//   const toggleMobileMenu = () => {
+//     setIsMobileMenuOpen(!isMobileMenuOpen);
+//     setOpenDropdown(null); // Close all dropdowns when toggling the menu
+//   };
+
+//   const toggleDropdown = (item: string) => {
+//     setOpenDropdown(openDropdown === item ? null : item);
+//   };
+
+//   // Close mobile menu when clicking outside
+//   useEffect(() => {
+//     const handleClickOutside = (event: MouseEvent) => {
+//       if (
+//         mobileMenuRef.current &&
+//         !mobileMenuRef.current.contains(event.target as Node)
+//       ) {
+//         setIsMobileMenuOpen(false);
+//         setOpenDropdown(null);
+//       }
+//     };
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, []);
 
 //   return (
-//     <nav
-//       onMouseLeave={() => setActive(null)}
-//       className="fixed top-0 left-0 w-full bg-black z-50 shadow-input flex items-center justify-between px-8 py-4"
-//     >
+//     <nav className="fixed top-0 left-0 w-full   bg-white z-50 shadow-input flex items-center justify-between h-16 px-8">
 //       {/* Arkay Logo */}
-//       <div className="text-white text-2xl font-bold uppercase">Arkay</div>
+//       <div className="text-black text-2xl font-bold">Arkay</div>
 
-//       {/* Menu Items */}
-//       <div className="flex space-x-6 text-sm ">
-//         <MenuItem setActive={setActive} active={active} item="Home">
-//           <DropdownLink href="/">Home</DropdownLink>
-//         </MenuItem>
-//         <MenuItem setActive={setActive} active={active} item="Services">
-//           <DropdownLink href="/services/design">Design</DropdownLink>
-//           <DropdownLink href="/services/development">Development</DropdownLink>
-//           <DropdownLink href="/services/consulting">Consulting</DropdownLink>
-//         </MenuItem>
-//         <MenuItem setActive={setActive} active={active} item="Projects">
-//           <DropdownLink href="/projects/web">Web Projects</DropdownLink>
-//           <DropdownLink href="/projects/mobile">Mobile Projects</DropdownLink>
-//           <DropdownLink href="/projects/branding">
-//             Branding Projects
-//           </DropdownLink>
-//         </MenuItem>
-//         <MenuItem setActive={setActive} active={active} item="Products">
-//           <DropdownLink href="/products/1">Product 1</DropdownLink>
-//           <DropdownLink href="/products/2">Product 2</DropdownLink>
-//           <DropdownLink href="/products/3">Product 3</DropdownLink>
-//         </MenuItem>
-//         <MenuItem setActive={setActive} active={active} item="Contact">
-//           <DropdownLink href="/contact">Contact</DropdownLink>
-//         </MenuItem>
+//       {/* Hamburger Menu Icon for Mobile */}
+//       <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
+//         {isMobileMenuOpen ? (
+//           <RxCross2 className="w-6 h-6" />
+//         ) : (
+//           <GiHamburgerMenu className="w-6 h-6" />
+//         )}
 //       </div>
-//     </nav>
-//   );
-// };
 
-// const DropdownLink = ({
-//   children,
-//   href,
-// }: {
-//   children: React.ReactNode;
-//   href: string;
-// }) => {
-//   return (
-//     <Link
-//       href={href}
-//       className="block text-white hover:bg-white/[0.1] py-2 transition"
-//     >
-//       {children}
-//     </Link>
+//       {/* Desktop Menu Items */}
+//       <div className="hidden md:flex space-x-6 text-sm h-full items-center">
+//         <Link href="/" className="text-black hover:opacity-80">
+//           Home
+//         </Link>
+//         <div
+//           className="relative"
+//           onMouseEnter={() => setOpenDropdown("Services")}
+//           onMouseLeave={() => setOpenDropdown(null)}
+//         >
+//           <button
+//             onClick={() => toggleDropdown("Services")}
+//             className="text-black hover:opacity-80 flex items-center"
+//           >
+//             Services <FaAngleDown className="ml-1 text-xs" />
+//           </button>
+//           {openDropdown === "Services" && (
+//             <motion.div
+//               initial={{ opacity: 0, y: -10 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.3 }}
+//               className="absolute top-full left-0 bg-white shadow-lg p-4"
+//             >
+//               <Link href="/services/design" className="block py-2">
+//                 Design
+//               </Link>
+//               <Link href="/services/development" className="block py-2">
+//                 Development
+//               </Link>
+//               <Link href="/services/consulting" className="block py-2">
+//                 Consulting
+//               </Link>
+//             </motion.div>
+//           )}
+//         </div>
+//         <div
+//           className="relative"
+//           onMouseEnter={() => setOpenDropdown("Projects")}
+//           onMouseLeave={() => setOpenDropdown(null)}
+//         >
+//           <button
+//             onClick={() => toggleDropdown("Projects")}
+//             className="text-black hover:opacity-80 flex items-center"
+//           >
+//             Projects <FaAngleDown className="ml-1 text-xs" />
+//           </button>
+//           {openDropdown === "Projects" && (
+//             <motion.div
+//               initial={{ opacity: 0, y: -10 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.3 }}
+//               className="absolute top-full left-0 bg-white shadow-lg p-4"
+//             >
+//               <Link href="/services/design" className="block py-2">
+//                 Indoor
+//               </Link>
+//               <Link href="/services/development" className="block py-2">
+//                 Outdoor
+//               </Link>
+//               <Link href="/services/consulting" className="block py-2">
+//                 Commercial
+//               </Link>
+//             </motion.div>
+//           )}
+//         </div>
+
+//         {/* Add other menu items similarly */}
+//       </div>
+
+//       {/* Mobile Dropdown Menu */}
+//       {isMobileMenuOpen && (
+//         <motion.div
+//           initial={{ opacity: 0, y: -20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.3 }}
+//           className="fixed top-16 left-0 w-full bg-white shadow-lg md:hidden"
+//           ref={mobileMenuRef}
+//         >
+//           <div className="flex flex-col space-y-4 p-4">
+//             <Link
+//               href="/"
+//               className="text-black hover:bg-gray-100 py-2"
+//               onClick={() => setIsMobileMenuOpen(false)}
+//             >
+//               Home
+//             </Link>
+//             <div>
+//               <button
+//                 onClick={() => toggleDropdown("Projects")}
+//                 className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+//               >
+//                 Projects <FaAngleDown className="text-xs" />
+//               </button>
+//               {openDropdown === "Projects" && (
+//                 <motion.div
+//                   initial={{ opacity: 0, height: 0 }}
+//                   animate={{ opacity: 1, height: "auto" }}
+//                   transition={{ duration: 0.3 }}
+//                   className="pl-4"
+//                 >
+//                   <Link
+//                     href="/services/design"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Design
+//                   </Link>
+//                   <Link
+//                     href="/services/development"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Development
+//                   </Link>
+//                   <Link
+//                     href="/services/consulting"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Consulting
+//                   </Link>
+//                 </motion.div>
+//               )}
+//             </div>
+//             <div>
+//               <button
+//                 onClick={() => toggleDropdown("Services")}
+//                 className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+//               >
+//                 Services <FaAngleDown className="text-xs" />
+//               </button>
+//               {openDropdown === "Services" && (
+//                 <motion.div
+//                   initial={{ opacity: 0, height: 0 }}
+//                   animate={{ opacity: 1, height: "auto" }}
+//                   transition={{ duration: 0.3 }}
+//                   className="pl-4"
+//                 >
+//                   <Link
+//                     href="/services/design"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Design
+//                   </Link>
+//                   <Link
+//                     href="/services/development"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Development
+//                   </Link>
+//                   <Link
+//                     href="/services/consulting"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Consulting
+//                   </Link>
+//                 </motion.div>
+//               )}
+//             </div>
+//             <div>
+//               <button
+//                 onClick={() => toggleDropdown("Services")}
+//                 className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+//               >
+//                 Services <FaAngleDown className="text-xs" />
+//               </button>
+//               {openDropdown === "Services" && (
+//                 <motion.div
+//                   initial={{ opacity: 0, height: 0 }}
+//                   animate={{ opacity: 1, height: "auto" }}
+//                   transition={{ duration: 0.3 }}
+//                   className="pl-4"
+//                 >
+//                   <Link
+//                     href="/services/design"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Design
+//                   </Link>
+//                   <Link
+//                     href="/services/development"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Development
+//                   </Link>
+//                   <Link
+//                     href="/services/consulting"
+//                     className="block py-2"
+//                     onClick={() => setIsMobileMenuOpen(false)}
+//                   >
+//                     Consulting
+//                   </Link>
+//                 </motion.div>
+//               )}
+//             </div>
+//             {/* Add other menu items similarly */}
+//           </div>
+//         </motion.div>
+//       )}
+//     </nav>
 //   );
 // };
 
 // export default Navbar;
 "use client";
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-
-const transition = {
-  type: "spring",
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
-  restDelta: 0.001,
-  restSpeed: 0.001,
-};
-
-const MenuItem = ({
-  setActive,
-  active,
-  item,
-  children,
-  isContact = false,
-  hasDropdown = false, // New prop to indicate if the item has a dropdown
-}: {
-  setActive: (item: string) => void;
-  active: string | null;
-  item: string;
-  children?: React.ReactNode;
-  isContact?: boolean;
-  hasDropdown?: boolean; // New prop
-}) => {
-  return (
-    <div
-      onMouseEnter={() => setActive(item)}
-      className="relative h-full flex items-center"
-    >
-      <motion.p
-        transition={{ duration: 0.3 }}
-        className={`cursor-pointer hover:opacity-[0.9] font-normal flex items-center ${
-          isContact
-            ? "bg-blue-500 text-white px-6 h-full flex items-center" // Full height for Contact
-            : "text-black" // Black text for other items
-        }`}
-      >
-        {item}
-        {/* Add down arrow for items with dropdown */}
-        {hasDropdown && (
-          <span className="ml-1 text-xs">&#9660;</span> // Tiny down arrow
-        )}
-      </motion.p>
-      {active === item && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 0 }} // Start dropdown from navbar end
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-          className="absolute top-full left-1/2 transform -translate-x-1/2" // No gap between navbar and dropdown
-        >
-          <motion.div
-            transition={transition}
-            layoutId="active"
-            className="bg-white backdrop-blur-sm overflow-hidden border border-black/[0.2] shadow-xl"
-          >
-            <motion.div layout className="w-max h-full p-4">
-              {children}
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      )}
-    </div>
-  );
-};
+import { GiHamburgerMenu } from "react-icons/gi";
+import { RxCross2 } from "react-icons/rx";
+import { FaAngleDown } from "react-icons/fa";
 
 const Navbar = () => {
-  const [active, setActive] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setOpenDropdown(null); // Close all dropdowns when toggling the menu
+  };
+
+  const toggleDropdown = (item: string) => {
+    setOpenDropdown(openDropdown === item ? null : item);
+  };
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+        setOpenDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <nav
-      onMouseLeave={() => setActive(null)}
-      className="fixed top-0 left-0 w-full bg-white z-50 shadow-input flex items-center justify-between h-12"
-    >
-      {/* Arkay Logo with padding */}
-      <div className="text-black text-2xl font-bold pl-8">Arkay</div>
+    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-input">
+      {/* Container with max-w-7xl */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Arkay Logo */}
+        <div className="bg-black h-full flex items-center p-3">
+          {" "}
+          {/* Added padding and full height */}
+          <div className="text-white text-2xl p-2 font-bold ">Arkay</div>
+        </div>
 
-      {/* Menu Items with padding */}
-      <div className="flex space-x-6 text-sm h-full items-center pr-8">
-        <MenuItem setActive={setActive} active={active} item="Home">
-          <DropdownLink href="/">Home</DropdownLink>
-        </MenuItem>
-        <MenuItem
-          setActive={setActive}
-          active={active}
-          item="Services"
-          hasDropdown={true} // Add dropdown arrow
-        >
-          <DropdownLink href="/services/design">Design</DropdownLink>
-          <DropdownLink href="/services/development">Development</DropdownLink>
-          <DropdownLink href="/services/consulting">Consulting</DropdownLink>
-        </MenuItem>
-        <MenuItem
-          setActive={setActive}
-          active={active}
-          item="Projects"
-          hasDropdown={true} // Add dropdown arrow
-        >
-          <DropdownLink href="/projects/web">Web Projects</DropdownLink>
-          <DropdownLink href="/projects/mobile">Mobile Projects</DropdownLink>
-          <DropdownLink href="/projects/branding">
-            Branding Projects
-          </DropdownLink>
-        </MenuItem>
-        <MenuItem
-          setActive={setActive}
-          active={active}
-          item="Products"
-          hasDropdown={true} // Add dropdown arrow
-        >
-          <DropdownLink href="/products/1">Product 1</DropdownLink>
-          <DropdownLink href="/products/2">Product 2</DropdownLink>
-          <DropdownLink href="/products/3">Product 3</DropdownLink>
-        </MenuItem>
-        {/* Contact with Full Blue Background */}
-        <MenuItem
-          setActive={setActive}
-          active={active}
-          item="Contact"
-          isContact={true}
-        >
-          <DropdownLink href="/contact">Contact</DropdownLink>
-        </MenuItem>
+        {/* Hamburger Menu Icon for Mobile */}
+        <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? (
+            <RxCross2 className="w-6 h-6" />
+          ) : (
+            <GiHamburgerMenu className="w-6 h-6" />
+          )}
+        </div>
+
+        {/* Desktop Menu Items */}
+        <div className="hidden md:flex space-x-6 text-sm h-full items-center">
+          <Link href="/" className="text-black hover:opacity-80">
+            Home
+          </Link>
+          <div
+            className="relative"
+            onMouseEnter={() => setOpenDropdown("Services")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <button
+              onClick={() => toggleDropdown("Services")}
+              className="text-black hover:opacity-80 flex items-center"
+            >
+              Services <FaAngleDown className="ml-1 text-xs" />
+            </button>
+            {openDropdown === "Services" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-full left-0 bg-white shadow-lg p-4"
+              >
+                <Link href="/services/design" className="block py-2">
+                  Design
+                </Link>
+                <Link href="/services/development" className="block py-2">
+                  Development
+                </Link>
+                <Link href="/services/consulting" className="block py-2">
+                  Consulting
+                </Link>
+              </motion.div>
+            )}
+          </div>
+          <div
+            className="relative"
+            onMouseEnter={() => setOpenDropdown("Projects")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <button
+              onClick={() => toggleDropdown("Projects")}
+              className="text-black hover:opacity-80 flex items-center"
+            >
+              Projects <FaAngleDown className="ml-1 text-xs" />
+            </button>
+            {openDropdown === "Projects" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-full left-0 bg-white shadow-lg p-4"
+              >
+                <Link href="/projects/indoor" className="block py-2">
+                  Indoor
+                </Link>
+                <Link href="/projects/outdoor" className="block py-2">
+                  Outdoor
+                </Link>
+                <Link href="/projects/commercial" className="block py-2">
+                  Commercial
+                </Link>
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-16 left-0 w-full bg-white shadow-lg md:hidden"
+            ref={mobileMenuRef}
+          >
+            <div className="flex flex-col space-y-4 p-4">
+              <Link
+                href="/"
+                className="text-black hover:bg-gray-100 py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <div>
+                <button
+                  onClick={() => toggleDropdown("Projects")}
+                  className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+                >
+                  Projects <FaAngleDown className="text-xs" />
+                </button>
+                {openDropdown === "Projects" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                    className="pl-4"
+                  >
+                    <Link
+                      href="/projects/indoor"
+                      className="block py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Indoor
+                    </Link>
+                    <Link
+                      href="/projects/outdoor"
+                      className="block py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Outdoor
+                    </Link>
+                    <Link
+                      href="/projects/commercial"
+                      className="block py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Commercial
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+              <div>
+                <button
+                  onClick={() => toggleDropdown("Services")}
+                  className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+                >
+                  Services <FaAngleDown className="text-xs" />
+                </button>
+                {openDropdown === "Services" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                    className="pl-4"
+                  >
+                    <Link
+                      href="/services/design"
+                      className="block py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Design
+                    </Link>
+                    <Link
+                      href="/services/development"
+                      className="block py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Development
+                    </Link>
+                    <Link
+                      href="/services/consulting"
+                      className="block py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Consulting
+                    </Link>
+                  </motion.div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </nav>
-  );
-};
-
-const DropdownLink = ({
-  children,
-  href,
-}: {
-  children: React.ReactNode;
-  href: string;
-}) => {
-  return (
-    <Link
-      href={href}
-      className="block text-black hover:bg-gray-100 py-2 transition"
-    >
-      {children}
-    </Link>
   );
 };
 
