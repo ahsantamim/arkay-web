@@ -148,7 +148,7 @@ const MenuItem = ({
     >
       <motion.p
         transition={{ duration: 0.3 }}
-        className={`cursor-pointer hover:opacity-[0.9] font-normal uppercase flex items-center ${
+        className={`cursor-pointer hover:opacity-[0.9] font-normal flex items-center ${
           isContact
             ? "bg-blue-500 text-white px-6 h-full flex items-center" // Full height for Contact
             : "text-black" // Black text for other items
@@ -188,10 +188,10 @@ const Navbar = () => {
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="fixed top-0 left-0 w-full bg-white z-50 shadow-input flex items-center justify-between h-16"
+      className="fixed top-0 left-0 w-full bg-white z-50 shadow-input flex items-center justify-between h-12"
     >
       {/* Arkay Logo with padding */}
-      <div className="text-black text-2xl font-bold uppercase pl-8">Arkay</div>
+      <div className="text-black text-2xl font-bold pl-8">Arkay</div>
 
       {/* Menu Items with padding */}
       <div className="flex space-x-6 text-sm h-full items-center pr-8">
