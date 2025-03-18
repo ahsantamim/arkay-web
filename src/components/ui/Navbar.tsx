@@ -261,6 +261,7 @@
 // };
 
 // export default Navbar;
+
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
@@ -302,20 +303,19 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-input">
+    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-input py-0.5">
       {/* Container with max-w-7xl */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4  sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Arkay Logo */}
-        <div className="h-full flex items-center">
-  <img
-    src="/logo.jpg"
-    alt="Company Logo"
-    width={40}
-    height={40}
-    className="transform scale-110" // Adjust the scale as needed
-  />
-</div>
-
+        <div className=" flex items-center mt-1">
+          <img
+            src="/logonew.png"
+            alt="Company Logo"
+            width={70}
+            height={70}
+            className="transform scale-110" // Adjust the scale as needed
+          />
+        </div>
 
         {/* Hamburger Menu Icon for Mobile */}
         <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
@@ -340,7 +340,12 @@ const Navbar = () => {
               onClick={() => toggleDropdown("About Us")}
               className="text-black hover:opacity-80 flex items-center"
             >
-              About Us <FaAngleDown className="ml-1 text-xs" />
+              <Link
+                href="/about"
+                className="text-black hover:opacity-80 flex items-center"
+              >
+                About Us <FaAngleDown className="ml-1 text-xs" />
+              </Link>
             </button>
             {openDropdown === "About Us" && (
               <motion.div
@@ -351,19 +356,19 @@ const Navbar = () => {
               >
                 <div className="py-2 space-y-2">
                   <Link
-                    href="/about/what-we-do"
+                    href="/about"
                     className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
                   >
                     What we do
                   </Link>
                   <Link
-                    href="/about/how-we-measure-audience"
+                    href="/about"
                     className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
                   >
                     How we measure Audience
                   </Link>
                   <Link
-                    href="/about/our-story"
+                    href="/about"
                     className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
                   >
                     Our story
@@ -375,7 +380,7 @@ const Navbar = () => {
                     Picture Of the Screen
                   </Link>
                   <Link
-                    href="/about/picture-of-beautification-projects"
+                    href="/about"
                     className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
                   >
                     Picture Of beautification projects
@@ -429,9 +434,9 @@ const Navbar = () => {
 
         {/* Contact Button for Desktop */}
         <div className="hidden md:flex h-full">
-        <button className="border-l-2 border-r-2 border-b-2 border-[#616467] text-black px-4 py-2 cursor-pointer bg-transparent hover:bg-black hover:text-white hover:border-black transition duration-200">
-  Contact
-</button>
+          <button className="border-2 border-[#616467] text-black px-4 py-2 cursor-pointer bg-transparent hover:bg-black hover:text-white hover:border-black transition duration-200">
+            Contact
+          </button>
         </div>
 
         {/* Mobile Dropdown Menu */}
