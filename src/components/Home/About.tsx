@@ -119,9 +119,10 @@ const Gallery = ({ items }: { items: Array<any> }) => {
       <div className="text-center mb-8">
         <h1 className="text-4xl font-extrabold mb-4">
           Explore Our{" "}
-          <span className="bg-gradient-to-r from-pink-500 via-red-500 to-violet-500 bg-clip-text text-transparent">
-            Digital Billboard
-          </span>{" "}
+          <span className="bg-gradient-to-r from-yellow-700 to-blue-700  bg-clip-text text-transparent">
+  Digital Billboard
+</span>{" "}
+
           Locations
         </h1>
 
