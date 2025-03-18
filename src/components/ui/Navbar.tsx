@@ -306,9 +306,16 @@ const Navbar = () => {
       {/* Container with max-w-7xl */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Arkay Logo */}
-        <div className="bg-black h-full flex items-center p-3">
-          <div className="text-white text-2xl p-2 font-bold">Arkay</div>
-        </div>
+        <div className="h-full flex items-center">
+  <img
+    src="/logo.jpg"
+    alt="Company Logo"
+    width={40}
+    height={40}
+    className="transform scale-110" // Adjust the scale as needed
+  />
+</div>
+
 
         {/* Hamburger Menu Icon for Mobile */}
         <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
