@@ -59,29 +59,29 @@
 //         </Link>
 //         <div
 //           className="relative"
-//           onMouseEnter={() => setOpenDropdown("Services")}
+//           onMouseEnter={() => setOpenDropdown("About Us")}
 //           onMouseLeave={() => setOpenDropdown(null)}
 //         >
 //           <button
-//             onClick={() => toggleDropdown("Services")}
+//             onClick={() => toggleDropdown("About Us")}
 //             className="text-black hover:opacity-80 flex items-center"
 //           >
-//             Services <FaAngleDown className="ml-1 text-xs" />
+//             About Us <FaAngleDown className="ml-1 text-xs" />
 //           </button>
-//           {openDropdown === "Services" && (
+//           {openDropdown === "About Us" && (
 //             <motion.div
 //               initial={{ opacity: 0, y: -10 }}
 //               animate={{ opacity: 1, y: 0 }}
 //               transition={{ duration: 0.3 }}
 //               className="absolute top-full left-0 bg-white shadow-lg p-4"
 //             >
-//               <Link href="/services/design" className="block py-2">
+//               <Link href="/About Us/design" className="block py-2">
 //                 Design
 //               </Link>
-//               <Link href="/services/development" className="block py-2">
+//               <Link href="/About Us/development" className="block py-2">
 //                 Development
 //               </Link>
-//               <Link href="/services/consulting" className="block py-2">
+//               <Link href="/About Us/consulting" className="block py-2">
 //                 Consulting
 //               </Link>
 //             </motion.div>
@@ -105,13 +105,13 @@
 //               transition={{ duration: 0.3 }}
 //               className="absolute top-full left-0 bg-white shadow-lg p-4"
 //             >
-//               <Link href="/services/design" className="block py-2">
+//               <Link href="/About Us/design" className="block py-2">
 //                 Indoor
 //               </Link>
-//               <Link href="/services/development" className="block py-2">
+//               <Link href="/About Us/development" className="block py-2">
 //                 Outdoor
 //               </Link>
-//               <Link href="/services/consulting" className="block py-2">
+//               <Link href="/About Us/consulting" className="block py-2">
 //                 Commercial
 //               </Link>
 //             </motion.div>
@@ -153,21 +153,21 @@
 //                   className="pl-4"
 //                 >
 //                   <Link
-//                     href="/services/design"
+//                     href="/About Us/design"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
 //                     Design
 //                   </Link>
 //                   <Link
-//                     href="/services/development"
+//                     href="/About Us/development"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
 //                     Development
 //                   </Link>
 //                   <Link
-//                     href="/services/consulting"
+//                     href="/About Us/consulting"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
@@ -178,12 +178,12 @@
 //             </div>
 //             <div>
 //               <button
-//                 onClick={() => toggleDropdown("Services")}
+//                 onClick={() => toggleDropdown("About Us")}
 //                 className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
 //               >
-//                 Services <FaAngleDown className="text-xs" />
+//                 About Us <FaAngleDown className="text-xs" />
 //               </button>
-//               {openDropdown === "Services" && (
+//               {openDropdown === "About Us" && (
 //                 <motion.div
 //                   initial={{ opacity: 0, height: 0 }}
 //                   animate={{ opacity: 1, height: "auto" }}
@@ -191,21 +191,21 @@
 //                   className="pl-4"
 //                 >
 //                   <Link
-//                     href="/services/design"
+//                     href="/About Us/design"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
 //                     Design
 //                   </Link>
 //                   <Link
-//                     href="/services/development"
+//                     href="/About Us/development"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
 //                     Development
 //                   </Link>
 //                   <Link
-//                     href="/services/consulting"
+//                     href="/About Us/consulting"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
@@ -216,12 +216,12 @@
 //             </div>
 //             <div>
 //               <button
-//                 onClick={() => toggleDropdown("Services")}
+//                 onClick={() => toggleDropdown("About Us")}
 //                 className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
 //               >
-//                 Services <FaAngleDown className="text-xs" />
+//                 About Us <FaAngleDown className="text-xs" />
 //               </button>
-//               {openDropdown === "Services" && (
+//               {openDropdown === "About Us" && (
 //                 <motion.div
 //                   initial={{ opacity: 0, height: 0 }}
 //                   animate={{ opacity: 1, height: "auto" }}
@@ -229,21 +229,21 @@
 //                   className="pl-4"
 //                 >
 //                   <Link
-//                     href="/services/design"
+//                     href="/About Us/design"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
 //                     Design
 //                   </Link>
 //                   <Link
-//                     href="/services/development"
+//                     href="/About Us/development"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
 //                     Development
 //                   </Link>
 //                   <Link
-//                     href="/services/consulting"
+//                     href="/About Us/consulting"
 //                     className="block py-2"
 //                     onClick={() => setIsMobileMenuOpen(false)}
 //                   >
@@ -307,9 +307,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Arkay Logo */}
         <div className="bg-black h-full flex items-center p-3">
-          {" "}
-          {/* Added padding and full height */}
-          <div className="text-white text-2xl p-2 font-bold ">Arkay</div>
+          <div className="text-white text-2xl p-2 font-bold">Arkay</div>
         </div>
 
         {/* Hamburger Menu Icon for Mobile */}
@@ -322,37 +320,60 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu Items */}
-        <div className="hidden md:flex space-x-6 text-sm h-full items-center">
+        <div className="hidden md:flex flex-grow justify-center space-x-6 text-sm h-full items-center">
           <Link href="/" className="text-black hover:opacity-80">
             Home
           </Link>
           <div
             className="relative"
-            onMouseEnter={() => setOpenDropdown("Services")}
+            onMouseEnter={() => setOpenDropdown("About Us")}
             onMouseLeave={() => setOpenDropdown(null)}
           >
             <button
-              onClick={() => toggleDropdown("Services")}
+              onClick={() => toggleDropdown("About Us")}
               className="text-black hover:opacity-80 flex items-center"
             >
-              Services <FaAngleDown className="ml-1 text-xs" />
+              About Us <FaAngleDown className="ml-1 text-xs" />
             </button>
-            {openDropdown === "Services" && (
+            {openDropdown === "About Us" && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-full left-0 bg-white shadow-lg p-4"
+                className="absolute top-full left-0 bg-white shadow-lg min-w-[200px]"
               >
-                <Link href="/services/design" className="block py-2">
-                  Design
-                </Link>
-                <Link href="/services/development" className="block py-2">
-                  Development
-                </Link>
-                <Link href="/services/consulting" className="block py-2">
-                  Consulting
-                </Link>
+                <div className="py-2 space-y-2">
+                  <Link
+                    href="/about/what-we-do"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    What we do
+                  </Link>
+                  <Link
+                    href="/about/how-we-measure-audience"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    How we measure Audience
+                  </Link>
+                  <Link
+                    href="/about/our-story"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    Our story
+                  </Link>
+                  <Link
+                    href="/about/picture-of-the-screen"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    Picture Of the Screen
+                  </Link>
+                  <Link
+                    href="/about/picture-of-beautification-projects"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    Picture Of beautification projects
+                  </Link>
+                </div>
               </motion.div>
             )}
           </div>
@@ -372,20 +393,38 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-full left-0 bg-white shadow-lg p-4"
+                className="absolute top-full left-0 bg-white shadow-lg min-w-[200px]"
               >
-                <Link href="/projects/indoor" className="block py-2">
-                  Indoor
-                </Link>
-                <Link href="/projects/outdoor" className="block py-2">
-                  Outdoor
-                </Link>
-                <Link href="/projects/commercial" className="block py-2">
-                  Commercial
-                </Link>
+                <div className="py-2 space-y-2">
+                  <Link
+                    href="/projects/indoor"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    Indoor
+                  </Link>
+                  <Link
+                    href="/projects/outdoor"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    Outdoor
+                  </Link>
+                  <Link
+                    href="/projects/commercial"
+                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                  >
+                    Commercial
+                  </Link>
+                </div>
               </motion.div>
             )}
           </div>
+        </div>
+
+        {/* Contact Button for Desktop */}
+        <div className="hidden md:flex h-full">
+        <button className="border-l-2 border-r-2 border-b-2 border-[#616467] text-black px-4 py-2 cursor-pointer bg-transparent hover:bg-black hover:text-white hover:border-black transition duration-200">
+  Contact
+</button>
         </div>
 
         {/* Mobile Dropdown Menu */}
@@ -407,6 +446,60 @@ const Navbar = () => {
               </Link>
               <div>
                 <button
+                  onClick={() => toggleDropdown("About Us")}
+                  className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+                >
+                  About Us <FaAngleDown className="text-xs" />
+                </button>
+                {openDropdown === "About Us" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                    className="pl-4"
+                  >
+                    <div className="space-y-2">
+                      <Link
+                        href="/about/what-we-do"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        What we do
+                      </Link>
+                      <Link
+                        href="/about/how-we-measure-audience"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        How we measure Audience
+                      </Link>
+                      <Link
+                        href="/about/our-story"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Our story
+                      </Link>
+                      <Link
+                        href="/about/picture-of-the-screen"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Picture Of the Screen
+                      </Link>
+                      <Link
+                        href="/about/picture-of-beautification-projects"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Picture Of beautification projects
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+              <div>
+                <button
                   onClick={() => toggleDropdown("Projects")}
                   className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
                 >
@@ -419,68 +512,39 @@ const Navbar = () => {
                     transition={{ duration: 0.3 }}
                     className="pl-4"
                   >
-                    <Link
-                      href="/projects/indoor"
-                      className="block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Indoor
-                    </Link>
-                    <Link
-                      href="/projects/outdoor"
-                      className="block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Outdoor
-                    </Link>
-                    <Link
-                      href="/projects/commercial"
-                      className="block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Commercial
-                    </Link>
+                    <div className="space-y-2">
+                      <Link
+                        href="/projects/indoor"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Indoor
+                      </Link>
+                      <Link
+                        href="/projects/outdoor"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Outdoor
+                      </Link>
+                      <Link
+                        href="/projects/commercial"
+                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Commercial
+                      </Link>
+                    </div>
                   </motion.div>
                 )}
               </div>
-              <div>
-                <button
-                  onClick={() => toggleDropdown("Services")}
-                  className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
-                >
-                  Services <FaAngleDown className="text-xs" />
-                </button>
-                {openDropdown === "Services" && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
-                    className="pl-4"
-                  >
-                    <Link
-                      href="/services/design"
-                      className="block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Design
-                    </Link>
-                    <Link
-                      href="/services/development"
-                      className="block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Development
-                    </Link>
-                    <Link
-                      href="/services/consulting"
-                      className="block py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Consulting
-                    </Link>
-                  </motion.div>
-                )}
-              </div>
+              {/* Contact Button for Mobile */}
+              <button
+                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </button>
             </div>
           </motion.div>
         )}
