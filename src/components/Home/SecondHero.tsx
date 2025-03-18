@@ -10,7 +10,7 @@ const SecondHeroSection = () => {
       <div className="absolute bottom-0 p-2 w-full h-1/4 bg-black clip-custom-shape flex items-center justify-center">
         <h2 className="text-3xl font-extrabold mb-4 text-white">
           Your Wish, Our Work – We Specialize in{" "}
-          <span className="bg-gradient-to-r from-pink-500 via-red-500 to-violet-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-yellow-700 to-blue-700 bg-clip-text text-transparent">
             Beautification
           </span>
           !
