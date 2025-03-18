@@ -49,7 +49,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="mx-auto">
+    <div className="mx-auto overflow-x-hidden">
       <Navbar />
       <Hero />
       <Gallery items={items} />
