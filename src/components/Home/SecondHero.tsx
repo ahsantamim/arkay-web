@@ -2,10 +2,19 @@ import { motion } from "framer-motion";
 
 const SecondHeroSection = () => {
   return (
-    <div
-      className="relative w-full h-screen bg-cover bg-center  mx-auto mb-48 pb-32 "
-      style={{ backgroundImage: "url('/Image/Home/secondhero.jpg')" }}
-    >
+    <div className="relative w-full h-screen mx-auto mb-48 pb-32">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/Image/About/hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       {/* Gradient Overlay Section */}
       <div className="absolute bottom-0 p-2 w-full h-1/4 bg-black clip-custom-shape flex items-center justify-center">
         <h2 className="text-3xl font-extrabold mb-4 text-white">
