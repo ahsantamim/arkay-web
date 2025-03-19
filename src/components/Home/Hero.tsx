@@ -1,11 +1,43 @@
-export default function Hero() {
-  const imagePath = "/Image/Home/arkay-mor-hero.jpg";
+import { useEffect, useState } from "react";
+
+const Hero = () => {
+  // Array of image paths
+  const imagePaths = [
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/arkay-mor-hero.jpg",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Automatically change the image every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
+    }, 4000); // 2 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
+  // Function to handle dot click
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+  };
 
   return (
     <section
       className="relative w-full h-screen bg-cover bg-center flex items-center justify-center text-white"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imagePath}')`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imagePaths[currentIndex]}')`,
       }}
     >
       <div className="relative z-10 text-center max-w-2xl px-6 mt-24">
@@ -40,6 +72,46 @@ export default function Hero() {
           <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
         </button>
       </div>
+
+      {/* Carousel Dots */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {imagePaths.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => handleDotClick(index)}
+            className={`w-2 h-2 rounded-full cursor-pointer ${
+              currentIndex === index ? "bg-white" : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Carousel Images */}
+      <div className="absolute w-full h-full overflow-hidden">
+        <div
+          className="w-full h-full flex transition-transform duration-1000"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
+        >
+          {imagePaths.map((imagePath, index) => (
+            <div
+              key={index}
+              className="w-full h-full flex-shrink-0 relative"
+              style={{
+                backgroundImage: `url('${imagePath}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Dark overlay shadow */}
+              <div className="absolute inset-0 bg-black opacity-50"></div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
-}
+};
+
+export default Hero;
