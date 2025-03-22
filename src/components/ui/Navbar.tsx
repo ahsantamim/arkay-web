@@ -118,7 +118,7 @@ const Navbar = () => {
                     How we measure Audience
                   </Link>
                   <Link
-                    href="/about"
+                    href="/about/our-story"
                     className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     Our story
