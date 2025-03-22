@@ -40,7 +40,7 @@ export default function Hero() {
         }}
       >
         {/* Overlay Shape */}
-        <div className="absolute inset-0 bg-black/90"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
 
         {/* About Us Content */}
         <div className="max-w-7xl px-6 py-16 text-center relative z-10">
