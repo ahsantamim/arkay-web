@@ -4,33 +4,40 @@ const Hero = () => {
   // Array of image paths
   const imagePaths = [
     "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
-    "/Image/Home/arkay-mor-hero.jpg",
+    "/Image/Home/Hero/image-2.jpg",
+    "/Image/Home/Hero/image-3.jpg",
+    "/Image/Home/Hero/image-4.jpg",
+    "/Image/Home/Hero/image-5.jpg",
+    "/Image/Home/Hero/image-6.jpg",
+    "/Image/Home/Hero/image-7.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
 
   // Automatically change the image every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
-    }, 4000); // 2 seconds
+      if (!transitioning) {
+        setTransitioning(true);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
+      }
+    }, 2000); // 2 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+  }, [transitioning]);
 
   // Function to handle dot click
   const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
+    if (!transitioning) {
+      setTransitioning(true);
+      setCurrentIndex(index);
+    }
+  };
+
+  // Reset the transitioning state after animation
+  const handleTransitionEnd = () => {
+    setTransitioning(false);
   };
 
   return (
@@ -93,6 +100,7 @@ const Hero = () => {
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
           }}
+          onTransitionEnd={handleTransitionEnd} // Detect the end of the transition
         >
           {imagePaths.map((imagePath, index) => (
             <div
