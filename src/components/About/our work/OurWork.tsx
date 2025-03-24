@@ -28,36 +28,36 @@ const tabsData: TabData[] = [
     title: "Screens",
     value: "screen",
     content: [
-      "https://via.placeholder.com/600x337/ff7b7b/333333?text=Screen+1",
-      "https://via.placeholder.com/600x337/7bbff7/333333?text=Screen+2",
-      "https://via.placeholder.com/600x337/7bf77b/333333?text=Screen+3",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
     ],
   },
   {
     title: "Beautification Projects",
     value: "beautification",
     content: [
-      "https://via.placeholder.com/600x337/f3a847/333333?text=Beautification+1",
-      "https://via.placeholder.com/600x337/7b6ef7/333333?text=Beautification+2",
-      "https://via.placeholder.com/600x337/f77b7b/333333?text=Beautification+3",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
     ],
   },
   {
     title: "Factory & Screens",
     value: "factory",
     content: [
-      "https://via.placeholder.com/600x337/ff7b9f/333333?text=Factory+1",
-      "https://via.placeholder.com/600x337/5c7bf7/333333?text=Factory+2",
-      "https://via.placeholder.com/600x337/7bf7b8/333333?text=Factory+3",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
     ],
   },
   {
     title: "Indoor Products",
     value: "indoor",
     content: [
-      "https://via.placeholder.com/600x337/8e7bf7/333333?text=Indoor+Product+1",
-      "https://via.placeholder.com/600x337/7bf7f7/333333?text=Indoor+Product+2",
-      "https://via.placeholder.com/600x337/7b7bf7/333333?text=Indoor+Product+3",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
+      "/Image/Home/Hero/image-5.jpg",
     ],
   },
 ];
@@ -120,7 +120,7 @@ const OurWork: React.FC<OurWorkProps> = ({
             <img
               src={image}
               alt="Gallery"
-              className="rounded-lg cursor-pointer w-full h-[337px] object-cover transform transition-transform duration-300 hover:scale-105"
+              className="bg-gray-600 border-amber-950  cursor-pointer w-full h-[337px] object-cover transform transition-transform duration-300 hover:scale-105"
               onClick={() => openLightbox(index)}
             />
           </div>
@@ -130,8 +130,19 @@ const OurWork: React.FC<OurWorkProps> = ({
       <Lightbox
         open={lightboxOpen}
         close={() => setLightboxOpen(false)}
-        slides={active.content.map((src) => ({ src }))}
-        index={lightboxIndex}
+        slides={[{ src: active.content[lightboxIndex] }]} // Show only one image
+        index={0} // Show the first image only
+        render={{
+          slide: ({ slide }) => (
+            <div className="flex justify-center items-center">
+              <img
+                src={slide.src}
+                alt="Lightbox Image"
+                className="rounded-lg w-[90vw] h-[70vh] object-cover" // Adjust size to a good modal view
+              />
+            </div>
+          ),
+        }}
       />
     </>
   );
