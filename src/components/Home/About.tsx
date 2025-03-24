@@ -23,9 +23,9 @@ const Gallery = ({ items }: { items: Array<any> }) => {
     <div className="min-h-screen max-w-6xl mx-auto mt-24 mb-64 pb-32 h-screen px-4 sm:px-0">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-extrabold mb-4">
+        <h1 className="text-5xl font-normal mb-4">
           Explore Our{" "}
-          <span className="bg-gradient-to-r from-yellow-700 to-blue-700  bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 via-black to-yellow-500 bg-clip-text text-transparent">
             Digital Billboard
           </span>{" "}
           Locations
@@ -87,7 +87,9 @@ const Gallery = ({ items }: { items: Array<any> }) => {
                   : "group-hover:opacity-100"
               )}
             >
-              <h2 className="text-white text-xl font-bold">{item.location}</h2>
+              <h2 className="text-white text-xl font-normal">
+                {item.location}
+              </h2>
             </div>
           </div>
         ))}
