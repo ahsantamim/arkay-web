@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-input py-0.5">
       {/* Container with max-w-7xl */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Arkay Logo */}
         <div className="flex items-center mt-1">
           <img
@@ -78,18 +78,22 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu Items */}
-        <div className="hidden md:flex flex-grow justify-center space-x-6 text-sm h-full items-center">
-          <Link href="/" className="text-black hover:text-blue-500">
+        <div className="hidden md:flex flex-grow justify-center space-x-4 text-sm h-full items-center">
+          <Link
+            href="/"
+            className="text-black hover:bg-blue-500 hover:text-white h-full flex items-center px-4 transition duration-200"
+          >
             Home
           </Link>
+          {/*About*/}
           <div
-            className="relative"
+            className="relative h-full flex items-center"
             onMouseEnter={() => handleMouseEnter("About Us")}
             onMouseLeave={handleMouseLeave}
           >
             <button
               onClick={() => toggleDropdown("About Us")}
-              className="text-black hover:text-blue-500 cursor-pointer flex items-center"
+              className="text-black hover:bg-blue-500 hover:text-white h-full flex items-center px-4 transition duration-200 cursor-pointer"
             >
               About Us <FaAngleDown className="ml-1 text-xs" />
             </button>
@@ -103,31 +107,31 @@ const Navbar = () => {
                 <div className="py-2 space-y-2">
                   <Link
                     href="/about"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     What we do
                   </Link>
                   <Link
-                    href="/about"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    href="/about/how-we-calculate-our-audience"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     How we measure Audience
                   </Link>
                   <Link
-                    href="/about"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    href="/about/our-story"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     Our story
                   </Link>
                   <Link
                     href="/about/picture-of-the-screen"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     Picture Of the Screen
                   </Link>
                   <Link
                     href="/about"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     Picture Of beautification projects
                   </Link>
@@ -135,18 +139,19 @@ const Navbar = () => {
               </motion.div>
             )}
           </div>
+          {/*Outdoor Advertising*/}
           <div
-            className="relative"
-            onMouseEnter={() => handleMouseEnter("Projects")}
+            className="relative h-full flex items-center"
+            onMouseEnter={() => handleMouseEnter("Outdoor Advertising")}
             onMouseLeave={handleMouseLeave}
           >
             <button
-              onClick={() => toggleDropdown("Projects")}
-              className="text-black hover:text-blue-500 flex items-center"
+              onClick={() => toggleDropdown("Outdoor Advertising")}
+              className="text-black hover:bg-blue-500 hover:text-white h-full flex items-center px-4 transition duration-200 cursor-pointer"
             >
-              Projects <FaAngleDown className="ml-1 text-xs" />
+              Outdoor Advertising <FaAngleDown className="ml-1 text-xs" />
             </button>
-            {openDropdown === "Projects" && (
+            {openDropdown === "Outdoor Advertising" && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -155,27 +160,48 @@ const Navbar = () => {
               >
                 <div className="py-2 space-y-2">
                   <Link
-                    href="/projects/indoor"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    href="/about"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
-                    Indoor
+                    All locations
                   </Link>
                   <Link
-                    href="/projects/outdoor"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    href="/about"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
-                    Outdoor
+                    LED on Wheels
                   </Link>
                   <Link
-                    href="/projects/commercial"
-                    className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                    href="/about"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
-                    Commercial
+                    Formats
                   </Link>
                 </div>
               </motion.div>
             )}
           </div>
+          {/*Project*/}
+
+          <Link
+            href="/"
+            className="text-black hover:bg-blue-500 hover:text-white h-full flex items-center px-4 transition duration-200"
+          >
+            Indoor Advertising
+          </Link>
+
+          <Link
+            href="/"
+            className="text-black hover:bg-blue-500 hover:text-white h-full flex items-center px-4 transition duration-200"
+          >
+            SME Adertising
+          </Link>
+          <Link
+            href="/"
+            className="text-black hover:bg-blue-500 hover:text-white h-full flex items-center px-4 transition duration-200"
+          >
+            Career
+          </Link>
         </div>
 
         {/* Contact Button for Desktop */}
@@ -197,7 +223,7 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4 p-4">
               <Link
                 href="/"
-                className="text-black hover:bg-gray-100 py-2"
+                className="text-black hover:bg-blue-500 hover:text-white py-2 px-4 transition duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
@@ -205,7 +231,7 @@ const Navbar = () => {
               <div>
                 <button
                   onClick={() => toggleDropdown("About Us")}
-                  className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+                  className="text-black hover:bg-blue-500 hover:text-white py-2 px-4 w-full flex items-center justify-between transition duration-200"
                 >
                   About Us <FaAngleDown className="text-xs" />
                 </button>
@@ -219,35 +245,35 @@ const Navbar = () => {
                     <div className="space-y-2">
                       <Link
                         href="/about/what-we-do"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         What we do
                       </Link>
                       <Link
                         href="/about/how-we-measure-audience"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         How we measure Audience
                       </Link>
                       <Link
                         href="/about/our-story"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Our story
                       </Link>
                       <Link
                         href="/about/picture-of-the-screen"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Picture Of the Screen
                       </Link>
                       <Link
                         href="/about/picture-of-beautification-projects"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Picture Of beautification projects
@@ -259,7 +285,7 @@ const Navbar = () => {
               <div>
                 <button
                   onClick={() => toggleDropdown("Projects")}
-                  className="text-black hover:bg-gray-100 py-2 w-full flex items-center justify-between"
+                  className="text-black hover:bg-blue-500 hover:text-white py-2 px-4 w-full flex items-center justify-between transition duration-200"
                 >
                   Projects <FaAngleDown className="text-xs" />
                 </button>
@@ -273,21 +299,21 @@ const Navbar = () => {
                     <div className="space-y-2">
                       <Link
                         href="/projects/indoor"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Indoor
                       </Link>
                       <Link
                         href="/projects/outdoor"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Outdoor
                       </Link>
                       <Link
                         href="/projects/commercial"
-                        className="block w-full text-sm hover:bg-black hover:text-white px-4 py-2"
+                        className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Commercial
@@ -298,7 +324,7 @@ const Navbar = () => {
               </div>
               {/* Contact Button for Mobile */}
               <button
-                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact

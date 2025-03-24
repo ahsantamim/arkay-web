@@ -3,3 +3,13 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+/* Hide scrollbar for all browsers */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
