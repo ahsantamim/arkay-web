@@ -115,13 +115,19 @@ const Navbar = () => {
                     href="/about/how-we-calculate-our-audience"
                     className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
-                    How we measure Audience
+                    How we calculate our audiences
                   </Link>
                   <Link
                     href="/about/our-story"
                     className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     Our story
+                  </Link>
+                  <Link
+                    href="/about/our-work"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
+                  >
+                    Our Work
                   </Link>
                   <Link
                     href="/about/picture-of-the-screen"

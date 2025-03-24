@@ -3,6 +3,8 @@ import Navbar from "../components/ui/Navbar";
 import Gallery from "@/components/Home/About";
 import SecondHeroSection from "@/components/Home/SecondHero";
 import Footer from "@/components/ui/Footer";
+import ClientGalleries from "@/components/Home/Client";
+import BlogCardGrid from "@/components/Home/News";
 
 export default function Home() {
   // Define the gallery items with Unsplash image URLs
@@ -54,6 +56,8 @@ export default function Home() {
       <Hero />
       <Gallery items={items} />
       <SecondHeroSection />
+      <ClientGalleries />
+      <BlogCardGrid />
       <Footer />
     </div>
   );

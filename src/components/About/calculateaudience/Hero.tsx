@@ -45,7 +45,7 @@ export default function Hero() {
         {/* Centered Content Container */}
         <div className="text-center z-10 max-w-7xl px-6">
           {/* Centered Heading Text */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4">
+          <h2 className="text-6xl sm:text-6xl md:text-6xl font-normal mb-4">
             How We Calculate Our Audience
           </h2>
 
