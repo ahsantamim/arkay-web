@@ -41,10 +41,10 @@ const Hero = () => {
       }}
     >
       <div className="relative z-10 text-center max-w-2xl px-6 mt-24">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">
+        <h1 className="text-4xl md:text-6xl font-semibold mb-4">
           Digital Billboards Transforming Cities
         </h1>
-        <p className="text-md md:text-lg mb-6">
+        <p className="text-md md:text-xl mb-6">
           Premium billboard spaces for high-impact advertising.
         </p>
         <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
