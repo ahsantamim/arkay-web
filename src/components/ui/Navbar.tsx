@@ -130,10 +130,34 @@ const Navbar = () => {
                     Picture Of the Screen
                   </Link>
                   <Link
-                    href="/about"
+                    href="/about/picture-of-beautiful-projects"
                     className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
                   >
                     Picture Of beautification projects
+                  </Link>
+                  <Link
+                    href="/about/picture-of-factory-&-few-screens"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
+                  >
+                    Picture Of factory & few screens
+                  </Link>
+                  <Link
+                    href="/about/picture-&-vidoes-of-indoor-projects"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
+                  >
+                    Picture & videos of indoor projects
+                  </Link>
+                  <Link
+                    href="/about/meet-the-team"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
+                  >
+                    Meet the team
+                  </Link>
+                  <Link
+                    href="/about/client-gallery"
+                    className="block w-full text-sm hover:bg-blue-500 hover:text-white px-4 py-2 transition duration-200"
+                  >
+                    Client gallery
                   </Link>
                 </div>
               </motion.div>
