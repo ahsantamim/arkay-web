@@ -40,12 +40,12 @@ export default function Hero() {
         }}
       >
         {/* Overlay Shape */}
-        <div className="absolute inset-0 bg-black/90"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
 
         {/* About Us Content */}
         <div className="max-w-7xl px-6 py-16 text-center relative z-10">
           {/* Responsive Heading */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-4">
+          <h2 className="text-6xl sm:text-6xl md:text-6xl font-normal mb-4">
             About Us
           </h2>
 
