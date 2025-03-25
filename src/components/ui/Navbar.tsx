@@ -54,7 +54,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-input py-0.5">
+    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-input ">
       {/* Container with max-w-7xl */}
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Arkay Logo */}
@@ -236,10 +236,10 @@ const Navbar = () => {
 
         {/* Contact Button for Desktop */}
         <div className="hidden md:flex h-full">
-          <button className="border-2 border-[#616467] text-black px-4 py-2 cursor-pointer bg-transparent hover:bg-black hover:text-white hover:border-black transition duration-200">
-            Contact
-          </button>
-        </div>
+        <button className="bg-blue-600 cursor-pointer text-white px-6 h-full hover:bg-gray-900 transition duration-200 flex items-center">
+          Contact
+        </button>
+      </div>
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
