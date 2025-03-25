@@ -25,7 +25,7 @@ const breakpointColumnsObj = {
 
 const tabsData: TabData[] = [
   {
-    title: "Screens",
+    title: "Picture of the screen",
     value: "screen",
     content: [
       "/Image/Home/Hero/image-5.jpg",
@@ -34,7 +34,7 @@ const tabsData: TabData[] = [
     ],
   },
   {
-    title: "Beautification Projects",
+    title: "Picture of beautification projects",
     value: "beautification",
     content: [
       "/Image/Home/Hero/image-5.jpg",
@@ -43,7 +43,7 @@ const tabsData: TabData[] = [
     ],
   },
   {
-    title: "Factory & Screens",
+    title: "Pictures of factory & screens",
     value: "factory",
     content: [
       "/Image/Home/Hero/image-5.jpg",
@@ -52,7 +52,7 @@ const tabsData: TabData[] = [
     ],
   },
   {
-    title: "Indoor Products",
+    title: "Pictures & vidoes of indoor products",
     value: "indoor",
     content: [
       "/Image/Home/Hero/image-5.jpg",
@@ -80,7 +80,7 @@ const OurWork: React.FC<OurWorkProps> = ({
     <>
       <div
         className={cn(
-          "flex flex-row justify-center gap-8 overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+          "flex flex-row justify-center mt-12 mb-48 gap-8 overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
           containerClassName
         )}
       >
@@ -138,7 +138,7 @@ const OurWork: React.FC<OurWorkProps> = ({
               <img
                 src={slide.src}
                 alt="Lightbox Image"
-                className="rounded-lg w-[90vw] h-[70vh] object-cover" // Adjust size to a good modal view
+                className="rounded-lg w-[60vw] h-[40vh] object-cover" // Adjust size to a good modal view
               />
             </div>
           ),
