@@ -23,42 +23,30 @@ const breakpointColumnsObj = {
   700: 1,
 };
 
+// Sample image paths - replace these with your actual image paths
+const sampleImage = "/Image/Home/Hero/image-5.jpg";
+const sampleImages = Array(10).fill(sampleImage);
+
 const tabsData: TabData[] = [
   {
     title: "Picture of the screen",
     value: "screen",
-    content: [
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-    ],
+    content: sampleImages,
   },
   {
     title: "Picture of beautification projects",
     value: "beautification",
-    content: [
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-    ],
+    content: sampleImages,
   },
   {
     title: "Pictures of factory & screens",
     value: "factory",
-    content: [
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-    ],
+    content: sampleImages,
   },
   {
-    title: "Pictures & vidoes of indoor products",
+    title: "Pictures & videos of indoor products",
     value: "indoor",
-    content: [
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-      "/Image/Home/Hero/image-5.jpg",
-    ],
+    content: sampleImages,
   },
 ];
 
@@ -77,10 +65,10 @@ const OurWork: React.FC<OurWorkProps> = ({
   };
 
   return (
-    <>
+    <div className="container mx-auto px-4">
       <div
         className={cn(
-          "flex flex-row justify-center mt-12 mb-48 gap-8 overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+          "flex flex-row justify-center mt-12 mb-12 gap-4 overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
           containerClassName
         )}
       >
@@ -89,10 +77,10 @@ const OurWork: React.FC<OurWorkProps> = ({
             key={tab.title}
             onClick={() => setActive(tab)}
             className={cn(
-              "relative px-6 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer",
+              "relative px-6 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer whitespace-nowrap",
               tabClassName,
-              "text-black bg-gray-200", // Default state (inactive tab)
-              active.value === tab.value && "bg-gray-800 text-white" // Active state
+              "text-black bg-gray-200 hover:bg-gray-300", // Default state (inactive tab)
+              active.value === tab.value && "text-white" // Active text color
             )}
           >
             {active.value === tab.value && (
@@ -100,51 +88,54 @@ const OurWork: React.FC<OurWorkProps> = ({
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  "absolute inset-0 rounded-full",
+                  "absolute inset-0 rounded-full bg-black", // Explicit black background
                   activeTabClassName
                 )}
               />
             )}
-            <span className="relative block">{tab.title}</span>
+            <span className="relative block z-10">{tab.title}</span>
           </button>
         ))}
       </div>
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="flex w-full gap-4 mt-6"
-        columnClassName="masonry-column"
-      >
-        {active.content.map((image, index) => (
-          <div key={index} className="relative">
-            <img
-              src={image}
-              alt="Gallery"
-              className="bg-gray-600 border-amber-950  cursor-pointer w-full h-[337px] object-cover transform transition-transform duration-300 hover:scale-105"
-              onClick={() => openLightbox(index)}
-            />
-          </div>
-        ))}
-      </Masonry>
+      <div className="mt-6">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="flex w-auto -ml-4"
+          columnClassName="ml-4 bg-clip-padding"
+        >
+          {active.content.map((image, index) => (
+            <div key={index} className="mb-4 break-inside-avoid">
+              <img
+                src={image}
+                alt={`Gallery ${index + 1}`}
+                className="bg-gray-200 border border-gray-300 cursor-pointer w-full h-auto max-h-[400px] object-cover transform transition-transform duration-300 hover:scale-105 rounded-lg"
+                onClick={() => openLightbox(index)}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Masonry>
+      </div>
 
       <Lightbox
         open={lightboxOpen}
         close={() => setLightboxOpen(false)}
-        slides={[{ src: active.content[lightboxIndex] }]} // Show only one image
-        index={0} // Show the first image only
+        slides={active.content.map(img => ({ src: img }))}
+        index={lightboxIndex}
         render={{
           slide: ({ slide }) => (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center h-full">
               <img
                 src={slide.src}
                 alt="Lightbox Image"
-                className="rounded-lg w-[60vw] h-[40vh] object-cover" // Adjust size to a good modal view
+                className="rounded-lg max-w-[90vw] max-h-[90vh] object-contain"
               />
             </div>
           ),
         }}
       />
-    </>
+    </div>
   );
 };
 
