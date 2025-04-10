@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Hero } from "@/components/About/what-we-do/Hero";
-import WhatWeDo from "@/components/About/what-we-do/WhatWeDo";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import { Hero } from "@/components/About/picture-of-beautiful-projects/Hero";
+import { ProjectGrid } from "@/components/About/picture-of-beautiful-projects/ProjectGrid";
+import FeaturedProjects from "@/components/About/picture-of-beautiful-projects/FeaturedProjects";
 
 export default function AboutPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +19,8 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
       <Hero scrolled={scrolled} />
-      <WhatWeDo />
+      <ProjectGrid />
+      <FeaturedProjects />
       <Footer />
     </div>
   );
