@@ -4,27 +4,34 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Plane } from "lucide-react";
+// Import FontAwesome icon as a placeholder
 
 export default function ClientGalleries() {
   const clients = [
     {
       name: "McDonald's",
+      location: "USA",
       image: "/Image/Home/Hero/image-2.jpg",
     },
     {
       name: "CV Library",
+      location: "UK",
       image: "/Image/Home/Hero/image-3.jpg",
     },
     {
       name: "Rolex",
+      location: "Switzerland",
       image: "/Image/Home/Hero/image-4.jpg",
     },
     {
       name: "DiRT 4",
+      location: "Global",
       image: "/Image/Home/Hero/image-5.jpg",
     },
     {
       name: "Client 5",
+      location: "Germany",
       image: "/Image/Home/Hero/image-6.jpg",
     },
   ];
@@ -115,6 +122,18 @@ export default function ClientGalleries() {
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
+
+                {/* Title and Location - Left Bottom */}
+                <div className="absolute bottom-0 left-0 p-4 bg-transparent text-white">
+                  <h3 className="text-lg font-semibold">{client.name}</h3>
+                  <p className="text-sm">{client.location}</p>
+                </div>
+
+                {/* Logo - Center */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <Plane className="text-white w-16 h-16" />{" "}
+                  {/* Icon placeholder */}
+                </div>
               </div>
             </div>
           ))}

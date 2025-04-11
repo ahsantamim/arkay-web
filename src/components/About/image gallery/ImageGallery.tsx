@@ -66,10 +66,10 @@ function ImageGallery() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Controls Bar */}
-        <div className=" shadow-lg mb-8 relative">
+        <div className="  mb-12 relative">
           <div className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
 
-          <div className="p-6 space-y-6">
+          <div className=" space-y-6">
             {/* Search and Controls Row */}
             <div className="flex flex-col md:flex-row gap-4 items-center">
               {/* Search */}
