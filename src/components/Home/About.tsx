@@ -20,16 +20,16 @@ const Gallery = ({ items }: { items: Array<any> }) => {
   }, []);
 
   return (
-    <div className="min-h-screen max-w-6xl mx-auto mt-24 mb-64 pb-32 h-screen px-4 sm:px-0">
+    <div className="min-h-screen max-w-7xl mx-auto mt-24 mb-64 pb-32 h-screen px-4 sm:px-0">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-normal mb-4">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-6">
           Explore Our{" "}
           <span className="bg-gradient-to-r from-blue-500 via-black to-yellow-500 bg-clip-text text-transparent">
             Digital Billboard
           </span>{" "}
           Locations
-        </h1>
+        </h2>
 
         <p className="text-lg text-gray-700 mb-6">
           Find the perfect spot for your advertisement with our extensive

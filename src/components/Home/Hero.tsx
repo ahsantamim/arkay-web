@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 
-const Hero = () => {
-  // Array of image paths
+export const Hero = () => {
   const imagePaths = [
     "/Image/Home/arkay-mor-hero.jpg",
     "/Image/Home/Hero/image-2.jpg",
@@ -14,111 +15,164 @@ const Hero = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [direction, setDirection] = useState(1); // 1 for right, -1 for left
 
-  // Automatically change the image every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       if (!transitioning) {
         setTransitioning(true);
+        setDirection(1);
         setCurrentIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
       }
-    }, 2000); // 2 seconds
+    }, 2000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [transitioning]);
+    return () => clearInterval(interval);
+  }, [transitioning, imagePaths.length]);
 
-  // Function to handle dot click
   const handleDotClick = (index: number) => {
     if (!transitioning) {
       setTransitioning(true);
+      setDirection(index > currentIndex ? 1 : -1);
       setCurrentIndex(index);
     }
   };
 
-  // Reset the transitioning state after animation
   const handleTransitionEnd = () => {
     setTransitioning(false);
   };
 
   return (
-    <section
-      className="relative w-full h-screen bg-cover bg-center flex items-center justify-center text-white"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imagePaths[currentIndex]}')`,
-      }}
-    >
-      <div className="relative z-10 text-center max-w-2xl px-6 mt-24">
-        <h2 className="text-6xl md:text-6xl font-normal mb-4">
-          Digital Billboards Transforming Cities
-        </h2>
-        <p className="text-md md:text-xl mb-6">
-          Premium billboard spaces for high-impact advertising.
-        </p>
-        <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
-          <span className="absolute inset-0 overflow-hidden rounded-full">
-            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          </span>
-          <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-4 px-6 ring-1 ring-white/10">
-            <span className="text-xl font-normal">Book a Meeting</span>
-            <svg
-              fill="none"
-              height="16"
-              viewBox="0 0 24 24"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.75 8.75L14.25 12L10.75 15.25"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </div>
-          <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
-        </button>
-      </div>
-
-      {/* Carousel Dots */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {imagePaths.map((_, index) => (
-          <div
-            key={index}
-            onClick={() => handleDotClick(index)}
-            className={`w-2 h-2 rounded-full cursor-pointer ${
-              currentIndex === index ? "bg-white" : "bg-gray-400"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Carousel Images */}
-      <div className="absolute w-full h-full overflow-hidden">
-        <div
-          className="w-full h-full flex transition-transform duration-1000"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-          }}
-          onTransitionEnd={handleTransitionEnd} // Detect the end of the transition
-        >
-          {imagePaths.map((imagePath, index) => (
+    <div className="relative w-full h-screen overflow-hidden bg-black">
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        <AnimatePresence initial={false} mode="popLayout" custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            initial={{ x: direction * 100 + "%" }}
+            animate={{ x: 0 }}
+            exit={{ x: direction * -100 + "%" }}
+            transition={{
+              duration: 1,
+              ease: [0.45, 0, 0.55, 1],
+            }}
+            className="absolute inset-0"
+            onAnimationComplete={handleTransitionEnd}
+          >
             <div
-              key={index}
-              className="w-full h-full flex-shrink-0 relative"
+              className="w-full h-full bg-cover bg-center will-change-transform"
               style={{
-                backgroundImage: `url('${imagePath}')`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundImage: `url('${imagePaths[currentIndex]}')`,
               }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Content Section */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-center max-w-5xl mx-auto"
+        >
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-6 py-2 mb-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+          >
+            <Sparkles className="w-5 h-5 text-yellow-400" />
+            <span className="text-white/90 font-medium">
+              Premium Digital Advertising
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight"
+          >
+            Digital Billboards
+            <span className="block bg-gradient-to-r from-yellow-400 via-yellow-300 to-blue-400 bg-clip-text text-transparent">
+              Transforming Cities
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="text-xl text-white/80 max-w-2xl mx-auto mb-12"
+          >
+            Premium billboard spaces for high-impact advertising that captures
+            attention and drives results.
+          </motion.p>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="flex justify-center items-center"
+          >
+            <button className="relative cursor-pointer group px-8 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-white/20 transition-all flex items-center gap-2 overflow-hidden">
+              {/* Gradient Hover Glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-transparent to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
+
+              {/* Button Content */}
+              <div className="relative z-10 flex items-center gap-2">
+                Book a Meeting
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Image Navigation */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.3 }}
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex items-center gap-3 z-20"
+      >
+        <div className="flex gap-4">
+          {imagePaths.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className="group relative"
             >
-              {/* Dark overlay shadow */}
-              <div className="absolute inset-0 bg-black opacity-50"></div>
-            </div>
+              <div
+                className={`w-14 h-1 rounded-full transition-all duration-500 ${
+                  currentIndex === index
+                    ? "bg-white scale-100"
+                    : "bg-white/30 scale-90 group-hover:bg-white/50"
+                }`}
+              />
+              {currentIndex === index && (
+                <motion.div
+                  layoutId="activeIndicator"
+                  className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full"
+                  transition={{ duration: 0.5 }}
+                />
+              )}
+            </button>
           ))}
         </div>
-      </div>
-    </section>
+      </motion.div>
+
+      {/* Bottom Gradient */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.3 }}
+        className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black to-transparent"
+      />
+    </div>
   );
 };
 

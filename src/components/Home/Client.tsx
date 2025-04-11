@@ -46,8 +46,8 @@ export default function ClientGalleries() {
     };
 
     handleResize(); // Set initial value
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Set up auto sliding interval
@@ -66,7 +66,9 @@ export default function ClientGalleries() {
   };
 
   const calculateTransform = () => {
-    return `translateX(-${(activeSlide % clients.length) * (100 / slidesToShow)}%)`;
+    return `translateX(-${
+      (activeSlide % clients.length) * (100 / slidesToShow)
+    }%)`;
   };
 
   const calculateWidth = () => {
@@ -76,7 +78,7 @@ export default function ClientGalleries() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16 lg:px-8">
       <div className="text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-gray-900 mb-6 sm:mb-8">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-6">
           Client Galleries
         </h2>
 
@@ -100,8 +102,8 @@ export default function ClientGalleries() {
           onTransitionEnd={handleTransitionEnd}
         >
           {[...clients, ...clients].map((client, index) => (
-            <div 
-              key={`${client.name}-${index}`} 
+            <div
+              key={`${client.name}-${index}`}
               className="relative flex-shrink-0 px-2"
               style={{ width: `${100 / slidesToShow}%` }}
             >
@@ -118,8 +120,6 @@ export default function ClientGalleries() {
           ))}
         </div>
       </div>
-
-
 
       {/* Show More Button */}
       <div className="text-center mt-8 sm:mt-12">
