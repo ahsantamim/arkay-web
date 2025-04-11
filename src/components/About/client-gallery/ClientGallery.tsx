@@ -45,13 +45,13 @@ const clients = [
     logo: Computer,
   },
   {
-    name: "Fashion District",
-    description: "Dynamic Content Series",
+    name: "Global Tech Center",
+    description: "Smart Display Network",
     beforeImage:
-      "https://images.unsplash.com/photo-1567449303078-57ad995bd17f?w=800&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
     afterImage:
-      "https://images.unsplash.com/photo-1598178145162-34be5be49932?w=800&q=80",
-    logo: ShoppingBag,
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
+    logo: Computer,
   },
   {
     name: "Urban Metro Hub",
@@ -108,13 +108,13 @@ const clients = [
     logo: Anchor,
   },
   {
-    name: "Sports Complex",
-    description: "Arena Display System",
+    name: "Central Station",
+    description: "Transit Media Hub",
     beforeImage:
-      "https://images.unsplash.com/photo-1495464101292-552d0fb4b935?w=800&q=80",
+      "https://images.unsplash.com/photo-1494522358652-f30e61a60313?w=800&q=80",
     afterImage:
-      "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=80",
-    logo: Trophy,
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&q=80",
+    logo: Train,
   },
   {
     name: "Arts District",
@@ -198,13 +198,22 @@ const clients = [
     logo: Museum,
   },
   {
-    name: "Waterfront Plaza",
-    description: "Coastal Display Network",
+    name: "Innovation Park",
+    description: "Tech Corridor Displays",
     beforeImage:
-      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80",
+      "https://images.unsplash.com/photo-1498036882173-b41c28a8ba34?w=800&q=80",
     afterImage:
-      "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=800&q=80",
-    logo: Landmark,
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    logo: Warehouse,
+  },
+  {
+    name: "Financial Center",
+    description: "Premium LED Network",
+    beforeImage:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    afterImage:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    logo: BadgeDollarSign,
   },
 ];
 
